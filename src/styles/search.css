@@ -119,16 +119,12 @@
 
 .card:hover {
   border-color: #ffff00;
+  filter: drop-shadow(0 0 10px #ffff00);
   cursor: pointer;
 }
 
 .card__image {
   width: 220px;
-}
-
-.card__image:hover {
-  border-color: #ffff00;
-  filter: drop-shadow(0 0 10px #ffff00);
 }
 
 .card__image--dead,
