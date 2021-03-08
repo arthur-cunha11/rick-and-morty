@@ -3,7 +3,7 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import React from "react";
 import ReactDOM from "react-dom";
 import reportWebVitals from './reportWebVitals';
-import SearchPage from "./components/SearchCharacters/SearchPage";
+import SearchPage from "./components/Search/SearchPage";
 
 const client = new ApolloClient({
   uri: "https://rickandmortyapi.com/graphql",
