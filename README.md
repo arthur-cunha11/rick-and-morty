@@ -1,3 +1,7 @@
+![image 1](https://user-images.githubusercontent.com/53005772/110538436-cf229580-8102-11eb-8f2a-1da0ff263e72.png)
+
+# This App was developed to inGaia - Front-end development test
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
