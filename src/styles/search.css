@@ -93,11 +93,23 @@
   min-width: 320px;
 }
 
-.pages__counter {
-  border-radius: 16px;
-  border: 2px solid #606060;
+.search__pagination {
   display: flex;
+  justify-content: center;
   margin: 100px auto 200px;
+}
+
+.pages__arrow--left {
+  transform: rotate(180deg);
+}
+
+.pages__arrow--left,
+.pages__arrow--right {
+  cursor: pointer;
+}
+
+.pages__counter {
+  display: flex;
   padding: 0 10px;
   width: fit-content;
 }
@@ -127,8 +139,8 @@
   width: 220px;
 }
 
-.card__image--dead,
-.card__image--dead:hover {
+.dead,
+.dead:hover {
   filter: grayscale(100%);
 }
 
@@ -325,7 +337,7 @@
     text-align: start;
   }
 
-  .pages__counter {
+  .search__pagination {
     margin: 50px auto;
   }
 }
