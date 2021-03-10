@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 // This component renders the "About" section inside card details
-const CardDetailsPlace = (character) => {
+const CardDetailsPlace = ({ character }) => {
   const [status, setStatus] = useState(
     "It can't be told if it is alive or dead."
   );
