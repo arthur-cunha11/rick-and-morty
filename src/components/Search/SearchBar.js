@@ -1,4 +1,5 @@
 import { gql, useLazyQuery } from "@apollo/client";
+import arrow from "../../images/Arrow.svg";
 import Loading from "../Loading";
 import React, { useState } from "react";
 import SearchResult from "./SearchResult";
@@ -6,6 +7,7 @@ import SearchResult from "./SearchResult";
 // This components renders the search bar, button and pagination
 const SearchBar = () => {
   const [keyword, setKeyword] = useState("");
+  const [page, setPage] = useState(1);
 
   // Query to get all characters's data
   const GET_CHARACTERS = gql`
@@ -50,19 +52,24 @@ const SearchBar = () => {
     GET_CHARACTERS
   );
 
+  const count = data?.characters?.info?.count;
+  // The query always returns 20 results max, so it divides by 20 to know the number of pages
+  const numberOfPages = count > 20 ? Math.ceil(count / 20) : 1;
+
   // Execute query when search or pagination buttons are clicked
   const handleClick = (pageNumber) => {
-    getCharacters({
-      variables: { page: pageNumber, filter: { name: keyword } },
-    });
+    // Check if the input field is not blank
+    if (keyword.replace(/\s/g, "").length) {
+      getCharacters({
+        variables: { page: pageNumber, filter: { name: keyword } },
+      });
+    }
+    setPage(pageNumber);
   };
 
   // Render pagination buttons
   const pages = () => {
     const result = [];
-    const count =  data.characters?.info?.count
-    // The query always returns 20 results max, so it divides by 20 to know the number of pages
-    const numberOfPages = count > 20 ? Math.ceil(count / 20) : 1
 
     for (let i = 1; i <= numberOfPages; i++) {
       result.push(
@@ -106,7 +113,23 @@ const SearchBar = () => {
           <div className="search__result">
             <SearchResult characters={data.characters} />
           </div>
-          <div className="pages__counter">{pages()}</div>
+          <div className="search__pagination">
+            <img
+              alt="Left side arrow"
+              className="pages__arrow--left"
+              onClick={() => handleClick(page > 1 ? page - 1 : page)}
+              src={arrow}
+            />
+            <div className="pages__counter">{pages()}</div>
+            <img
+              alt="Right side arrow"
+              className="pages__arrow--right"
+              onClick={() =>
+                handleClick(page < numberOfPages ? page + 1 : page)
+              }
+              src={arrow}
+            />
+          </div>
         </>
       )}
       {error && <span className="search__error">No character found!</span>}
