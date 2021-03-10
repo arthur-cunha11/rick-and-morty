@@ -2,9 +2,7 @@ import React from "react";
 import residents from "../../../images/Residents.svg";
 
 // This component renders the "Origin and Location" section inside card details
-const CardDetailsPlace = (props) => {
-  const { place, text } = props;
-
+const CardDetailsPlace = ({ place, text }) => {
   return (
     <div className="card__details__text--origin">
       <h1 className="card__details__text--tittle">{text}</h1>
