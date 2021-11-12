@@ -48,9 +48,8 @@ const SearchBar = () => {
     }
   `;
 
-  const [getCharacters, { data, error, loading }] = useLazyQuery(
-    GET_CHARACTERS
-  );
+  const [getCharacters, { data, error, loading }] =
+    useLazyQuery(GET_CHARACTERS);
 
   const count = data?.characters?.info?.count;
   // The query always returns 20 results max, so it divides by 20 to know the number of pages
